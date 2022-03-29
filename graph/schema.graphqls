@@ -1,0 +1,62 @@
+type Enterprise {
+    id: ID!
+    name: String!
+    description: String!
+    sites: [Site!]!
+    applications: [Application!]!
+}
+
+type Site {
+    id: ID!
+    name: String!
+    description: String!
+    slices: [Slice!]!
+    smallCells: [SmallCell!]!
+    devices: [Device!]!
+    simCards: [SimCard!]!
+}
+
+type Application {
+    id: ID!
+    name: String!
+}
+
+type SmallCell {
+    id: ID!
+    name: String!
+}
+
+type DeviceGroup {
+    id: ID!
+    name: String!
+    devices: [Device!]!
+    slice: Slice
+}
+
+type Device {
+    id: ID!
+    name: String!
+    simCard: SimCard!
+#    ip: String TODO: resolver for specific field
+}
+
+type SimCard {
+    id: ID!
+    name: String!
+}
+
+type Slice {
+    id: ID!
+    name: String!
+}
+
+type Query {
+    enterprises: [Enterprise!]!
+    applications: [Application!]!
+    sites: [Site!]!
+    smallCells: [SmallCell!]!
+    slices: [Slice!]!
+    deviceGroups: [DeviceGroup!]!
+    devices: [Device!]!
+    simCards: [SimCard!]!
+}

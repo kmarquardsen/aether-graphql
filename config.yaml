@@ -1,0 +1,3 @@
+port: 8080
+onos: "localhost:5150"
+target: "connectivity-service-v2"
