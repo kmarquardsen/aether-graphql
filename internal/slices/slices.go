@@ -1,12 +1,13 @@
 package slices
 
 import (
+	"context"
 	"github.com/onosproject/aether-graphql/graph/model"
-	"github.com/onosproject/aether-roc-api/pkg/aether_2_0_0/types"
+	"github.com/onosproject/aether-roc-api/pkg/aether_2_1_0/types"
 )
 
-func List(site types.EnterprisesEnterpriseSite) []*model.Slice {
-	slices := []*model.Slice{}
+func List(ctx context.Context, site types.EnterprisesEnterpriseSite) []*model.Slice {
+	var slices []*model.Slice
 	for _, slice := range *site.Slice {
 		d := &model.Slice{
 			ID:   slice.SliceId,

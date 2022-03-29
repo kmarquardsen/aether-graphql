@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/onosproject/aether-graphql/internal/store"
-	"github.com/onosproject/aether-roc-api/pkg/aether_2_0_0/types"
+	"github.com/onosproject/aether-roc-api/pkg/aether_2_1_0/types"
 	"github.com/onosproject/aether-roc-api/pkg/utils"
 	externalRef1 "github.com/onosproject/config-models/modelplugin/aether-2.0.0/aether_2_0_0"
 	"github.com/onosproject/onos-lib-go/pkg/logging"

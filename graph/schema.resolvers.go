@@ -6,7 +6,10 @@ package graph
 import (
 	"context"
 	"fmt"
+	"github.com/onosproject/aether-graphql/internal/devicegroups"
 	"github.com/onosproject/aether-graphql/internal/devices"
+	"github.com/onosproject/aether-graphql/internal/slices"
+	"github.com/onosproject/aether-graphql/internal/smallcells"
 	"github.com/onosproject/aether-graphql/internal/store"
 
 	"github.com/onosproject/aether-graphql/graph/generated"
@@ -65,15 +68,48 @@ func (r *queryResolver) Sites(ctx context.Context) ([]*model.Site, error) {
 }
 
 func (r *queryResolver) SmallCells(ctx context.Context) ([]*model.SmallCell, error) {
-	panic(fmt.Errorf("not implemented"))
+	var results []*model.SmallCell
+
+	rocEnterprises, err := enterprises.List(ctx, store.Target)
+	if err != nil {
+		return nil, err
+	}
+	for _, re := range *rocEnterprises.Enterprise {
+		for _, rs := range *re.Site {
+			results = append(results, smallcells.List(ctx, rs)...)
+		}
+	}
+	return results, nil
 }
 
 func (r *queryResolver) Slices(ctx context.Context) ([]*model.Slice, error) {
-	panic(fmt.Errorf("not implemented"))
+	var results []*model.Slice
+
+	rocEnterprises, err := enterprises.List(ctx, store.Target)
+	if err != nil {
+		return nil, err
+	}
+	for _, re := range *rocEnterprises.Enterprise {
+		for _, rs := range *re.Site {
+			results = append(results, slices.List(ctx, rs)...)
+		}
+	}
+	return results, nil
 }
 
 func (r *queryResolver) DeviceGroups(ctx context.Context) ([]*model.DeviceGroup, error) {
-	panic(fmt.Errorf("not implemented"))
+	var results []*model.DeviceGroup
+
+	rocEnterprises, err := enterprises.List(ctx, store.Target)
+	if err != nil {
+		return nil, err
+	}
+	for _, re := range *rocEnterprises.Enterprise {
+		for _, rs := range *re.Site {
+			results = append(results, devicegroups.List(ctx, rs)...)
+		}
+	}
+	return results, nil
 }
 
 func (r *queryResolver) Devices(ctx context.Context) ([]*model.Device, error) {

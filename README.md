@@ -42,7 +42,11 @@ query {
     enterprises{
     id,
     name,
-    description
+    description,
+    applications {
+      id,
+      name,  
+    }, 
     sites{
       id,
       name,
@@ -52,5 +56,25 @@ query {
       }
     },
   }
+}
+```
+
+* small cells
+```graphql
+query {
+    smallCells{
+      id,
+      name,
+    }
+}
+```
+
+* slices
+```graphql
+query {
+    slices{
+      id,
+      name,
+    }
 }
 ```

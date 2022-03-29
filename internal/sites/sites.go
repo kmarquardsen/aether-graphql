@@ -6,7 +6,7 @@ import (
 	"github.com/onosproject/aether-graphql/internal/devices"
 	"github.com/onosproject/aether-graphql/internal/simcards"
 	"github.com/onosproject/aether-graphql/internal/slices"
-	"github.com/onosproject/aether-roc-api/pkg/aether_2_0_0/types"
+	"github.com/onosproject/aether-roc-api/pkg/aether_2_1_0/types"
 )
 
 func List(ctx context.Context, enterprise types.EnterprisesEnterprise) []*model.Site {
@@ -18,7 +18,7 @@ func List(ctx context.Context, enterprise types.EnterprisesEnterprise) []*model.
 			Name:     *rs.DisplayName,
 			Devices:  devices.List(ctx, rs),
 			SimCards: simCards,
-			Slices:   slices.List(rs),
+			Slices:   slices.List(ctx, rs),
 		}
 		sites = append(sites, s)
 	}
