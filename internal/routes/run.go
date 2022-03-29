@@ -1,12 +1,18 @@
 package routes
 
 import (
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
+	r.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:3000", "*"},
+		AllowMethods:     []string{"POST", "GET", "PUT", "PATCH"},
+		AllowCredentials: true,
+	}))
 	r.GET("/", func(c *gin.Context) {
 		c.IndentedJSON(http.StatusOK, gin.H{
 			"graphql-playground": "http://localhost:8080/graphiql",

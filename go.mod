@@ -10,10 +10,14 @@ require (
 	github.com/onosproject/config-models/modelplugin/aether-2.0.0 v0.0.0-20220216234852-fe7a7bd72a2f // TODO: outdated
 	github.com/onosproject/onos-lib-go v0.8.13
 	github.com/openconfig/gnmi v0.0.0-20220131173555-39aa74195f0d
+	github.com/prometheus/client_golang v1.12.1
+	github.com/prometheus/common v0.32.1
 	github.com/spf13/viper v1.9.0
 	github.com/vektah/gqlparser/v2 v2.4.0
 	google.golang.org/grpc v1.41.0
 )
+
+require github.com/gin-contrib/cors v1.3.1
 
 require (
 	github.com/Shopify/sarama v1.31.1 // indirect
